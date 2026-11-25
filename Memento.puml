@@ -3,22 +3,21 @@ title Memento
 left to right direction
 hide members
 
-class Aluno
+class Pedido
+interface EstadoPedido
 
-Aluno --> "0..*" AlunoEstado
-Aluno --> "1" AlunoEstado
+Pedido --> "0..*" EstadoPedido : historico
+Pedido --> "0..1" EstadoPedido : estado atual
 
-class AlunoEstadoEvadido implements AlunoEstado
-class AlunoEstadoFormado implements AlunoEstado
-class AlunoEstadoJubilado implements AlunoEstado
-class AlunoEstadoMatriculado implements AlunoEstado
-class AlunoEstadoTrancado implements AlunoEstado
-class AlunoEstadoTransferido implements AlunoEstado
+class PedidoEstadoRecebido
+class PedidoEstadoEmPreparo
+class PedidoEstadoPronto
+class PedidoEstadoEntregue
+class PedidoEstadoCancelado
 
-AlunoEstadoEvadido --> "1" AlunoEstadoEvadido
-AlunoEstadoFormado --> "1" AlunoEstadoFormado
-AlunoEstadoJubilado --> "1" AlunoEstadoJubilado
-AlunoEstadoMatriculado --> "1" AlunoEstadoMatriculado
-AlunoEstadoTrancado --> "1" AlunoEstadoTrancado
-AlunoEstadoTransferido --> "1" AlunoEstadoTransferido
+PedidoEstadoRecebido ..|> EstadoPedido
+PedidoEstadoEmPreparo ..|> EstadoPedido
+PedidoEstadoPronto ..|> EstadoPedido
+PedidoEstadoEntregue ..|> EstadoPedido
+PedidoEstadoCancelado ..|> EstadoPedido
 @enduml
